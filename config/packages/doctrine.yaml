@@ -16,3 +16,9 @@ doctrine:
                 dir: '%kernel.project_dir%/src/UserModule/Infrastructure/Persistence/Schema'
                 prefix: 'App\UserModule\Domain'
                 alias: UserModule
+            TaskModule:
+                is_bundle: false
+                type: yml
+                dir: '%kernel.project_dir%/src/TaskModule/Infrastructure/Persistence/Schema'
+                prefix: 'App\TaskModule\Domain'
+                alias: UserModule

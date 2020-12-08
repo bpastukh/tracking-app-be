@@ -1,0 +1,2 @@
+services:
+  App\TaskModule\Infrastructure\Persistence\TaskRepository: '@App\TaskModule\Infrastructure\Persistence\DoctrineTaskRepository'

@@ -14,7 +14,9 @@ security:
     main:
       anonymous: true
       provider: users
+      context: user
       json_login:
+        username_path: email
         check_path: /login
 
   access_control:

@@ -6,7 +6,6 @@ namespace App\UserModule\Infrastructure\Persistence;
 
 use App\UserModule\Domain\User\User;
 use App\UserModule\Domain\User\UserId;
-use App\UserModule\Domain\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Ramsey\Uuid\Uuid;
 

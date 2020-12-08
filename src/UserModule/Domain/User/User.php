@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\UserModule\Domain\User;
 
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface
@@ -26,9 +27,14 @@ class User implements UserInterface
         return new self($id, $email, $password);
     }
 
+    public function id(): UserId
+    {
+        return UserId::create(Uuid::fromString($this->id));
+    }
+
     public function getRoles(): array
     {
-        return [];
+        return ['IS_AUTHENTICATED_FULLY'];
     }
 
     public function getPassword(): string

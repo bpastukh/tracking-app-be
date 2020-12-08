@@ -1,2 +1,2 @@
 services:
-  App\UserModule\Domain\UserRepository: '@App\UserModule\Infrastructure\Persistence\DoctrineUserRepository'
+  App\UserModule\Infrastructure\Persistence\UserRepository: '@App\UserModule\Infrastructure\Persistence\DoctrineUserRepository'

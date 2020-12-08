@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UserModule\Domain;
+namespace App\UserModule\Infrastructure\Persistence;
 
 use App\UserModule\Domain\User\User;
 use App\UserModule\Domain\User\UserId;

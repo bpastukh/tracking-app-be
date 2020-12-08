@@ -1,0 +1,33 @@
+App\TaskModule\Domain\Task:
+  type: entity
+  table: tasks
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+  fields:
+    title:
+      type: string
+      column: title
+      length: 100
+      nullable: false
+    comment:
+      type: string
+      length: 255
+      column: comment
+      nullable: true
+    loggedTime:
+      type: integer
+      column: logged_time
+      nullable: false
+      options:
+        unsigned: true
+    createdAt:
+      type: datetime
+      columnt: created_at
+      nullable: false
+    userId:
+      type: string
+      column: user_id
+      nullable: false

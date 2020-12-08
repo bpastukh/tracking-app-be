@@ -7,13 +7,12 @@ namespace App\Controller;
 use App\Service\ResponseCreator;
 use App\UserModule\Application\RegisterUserService;
 use Assert\InvalidArgumentException;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class SecurityController extends AbstractController
+final class SecurityController
 {
     /**
      * @Route("/login", methods={"POST"})
@@ -26,8 +25,11 @@ final class SecurityController extends AbstractController
     /**
      * @Route("/register", methods={"POST"})
      */
-    public function register(ResponseCreator $responseCreator, Request $request, RegisterUserService $service): JsonResponse
-    {
+    public function register(
+        ResponseCreator $responseCreator,
+        Request $request,
+        RegisterUserService $service
+    ): JsonResponse {
         try {
             $email = $request->request->get('email');
             $password = $request->request->get('password');

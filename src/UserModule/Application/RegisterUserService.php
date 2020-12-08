@@ -7,7 +7,7 @@ namespace App\UserModule\Application;
 use App\UserModule\Domain\User\User;
 use App\UserModule\Domain\User\UserEmail;
 use App\UserModule\Domain\User\UserPassword;
-use App\UserModule\Domain\UserRepository;
+use App\UserModule\Infrastructure\Persistence\UserRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
