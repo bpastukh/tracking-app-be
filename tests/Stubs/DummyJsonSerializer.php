@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Service;
+namespace App\Tests\Stubs;
 
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\SerializationContext;
