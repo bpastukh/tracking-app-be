@@ -14,20 +14,20 @@ use Ramsey\Uuid\Uuid;
 
 final class UserTest extends TestCase
 {
-    public function testUserCreate(): void
+    public function testUserCreated(): void
     {
         $user = User::create(UserId::create(Uuid::uuid1()), UserEmail::create('dummy@email.com'), UserPassword::create('dummy-password'));
 
         self::assertInstanceOf(User::class, $user);
     }
 
-    public function testInvalidUserEmail(): void
+    public function testInvalidUserEmailExceptionThrown(): void
     {
         $this->expectException(InvalidArgumentException::class);
         User::create(UserId::create(Uuid::uuid1()), UserEmail::create('dummy'), UserPassword::create('dummy-password'));
     }
 
-    public function testEmptyUserPassword(): void
+    public function testEmptyUserPasswordExceptionThrown(): void
     {
         $this->expectException(InvalidArgumentException::class);
         User::create(UserId::create(Uuid::uuid1()), UserEmail::create('dummy@email.com'), UserPassword::create(''));

@@ -21,7 +21,7 @@ final class RegisterUserServiceTest extends TestCase
         $this->service = new RegisterUserService(new DummyUserRepository(), new DummyPasswordEncoder(), new DummyEntityManager());
     }
 
-    public function testRegisterUser(): void
+    public function testUserRegistered(): void
     {
         $user = $this->service->register('dummy@email.com', 'dummy-password');
 
