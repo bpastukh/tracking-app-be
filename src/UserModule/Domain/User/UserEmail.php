@@ -17,7 +17,7 @@ final class UserEmail
 
     public static function create(string $email): self
     {
-        Assertion::email($email);
+        Assertion::email($email, 'Invalid email');
 
         return new self($email);
     }

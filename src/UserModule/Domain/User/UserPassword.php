@@ -17,7 +17,7 @@ final class UserPassword
 
     public static function create(string $password): self
     {
-        Assertion::notBlank($password);
+        Assertion::notBlank($password, 'Password should not be blank');
 
         return new self($password);
     }

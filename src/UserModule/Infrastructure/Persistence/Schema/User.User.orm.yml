@@ -1,4 +1,4 @@
-App\UserModule\Domain\User:
+App\UserModule\Domain\User\User:
   type: entity
   table: users
   id:

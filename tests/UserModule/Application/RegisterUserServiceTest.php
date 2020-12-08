@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Application;
 
-use App\Tests\Stubs\DummyObjectManager;
+use App\Tests\Stubs\DummyEntityManager;
 use App\Tests\Stubs\DummyPasswordEncoder;
 use App\UserModule\Application\RegisterUserService;
 use App\UserModule\Domain\User\User;
@@ -18,7 +18,7 @@ final class RegisterUserServiceTest extends TestCase
 
     public function setUp(): void
     {
-        $this->service = new RegisterUserService(new DummyUserRepository(), new DummyPasswordEncoder(), new DummyObjectManager());
+        $this->service = new RegisterUserService(new DummyUserRepository(), new DummyPasswordEncoder(), new DummyEntityManager());
     }
 
     public function testRegisterUser(): void

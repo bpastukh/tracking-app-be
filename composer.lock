@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4f170cef0e736b2ab8ee3d866c2ff4f",
+    "content-hash": "9458ddb2f6097238934fc68fb988b470",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2003,6 +2003,55 @@
                 "psr-3"
             ],
             "time": "2020-03-23T09:12:05+00:00"
+        },
+        {
+            "name": "qandidate/symfony-json-request-transformer",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/qandidate-labs/symfony-json-request-transformer.git",
+                "reference": "615f5306281a278fd8830491e4d5122b1bb5df98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/qandidate-labs/symfony-json-request-transformer/zipball/615f5306281a278fd8830491e4d5122b1bb5df98",
+                "reference": "615f5306281a278fd8830491e4d5122b1bb5df98",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/http-kernel": "^4.4|^5.0"
+            },
+            "require-dev": {
+                "broadway/coding-standard": "^1.0",
+                "phpstan/phpstan": "^0.12.14",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Qandidate\\Common\\Symfony\\HttpKernel\\EventListener\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander",
+                    "email": "iam.asm89@gmail.com"
+                },
+                {
+                    "name": "Qandidate.com",
+                    "homepage": "http://labs.qandidate.com/"
+                }
+            ],
+            "description": "A Symfony event listener for decoding JSON encoded request content",
+            "support": {
+                "issues": "https://github.com/qandidate-labs/symfony-json-request-transformer/issues",
+                "source": "https://github.com/qandidate-labs/symfony-json-request-transformer/tree/master"
+            },
+            "time": "2020-03-11T10:21:53+00:00"
         },
         {
             "name": "ramsey/collection",
@@ -6576,7 +6625,9 @@
     "platform": {
         "php": "^7.4",
         "ext-ctype": "*",
-        "ext-iconv": "*"
+        "ext-iconv": "*",
+        "ext-json": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }

@@ -8,7 +8,8 @@ use App\UserModule\Domain\User\User;
 use App\UserModule\Domain\User\UserEmail;
 use App\UserModule\Domain\User\UserPassword;
 use App\UserModule\Domain\UserRepository;
-use Doctrine\Persistence\ObjectManager;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 final class RegisterUserService
@@ -24,16 +25,15 @@ final class RegisterUserService
     private $encoder;
 
     /**
-     * @var ObjectManager
+     * @var EntityManagerInterface
      */
-    private $om;
+    private $em;
 
-    public function __construct(UserRepository $repository, UserPasswordEncoderInterface $encoder,
-                                ObjectManager $om)
+    public function __construct(UserRepository $repository, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em)
     {
         $this->repository = $repository;
         $this->encoder = $encoder;
-        $this->om = $om;
+        $this->em = $em;
     }
 
     public function register(string $email, string $password): User
@@ -43,7 +43,11 @@ final class RegisterUserService
         $user->replacePassword(UserPassword::create($encodedPassword));
 
         $this->repository->add($user);
-        $this->om->flush();
+
+        try {
+            $this->em->flush();
+        } catch (UniqueConstraintViolationException $exception) {
+        }
 
         return $user;
     }
