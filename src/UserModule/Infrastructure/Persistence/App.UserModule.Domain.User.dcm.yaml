@@ -1,0 +1,21 @@
+App\UserModule\Domain\User:
+  type: entity
+  table: users
+  id:
+    id:
+      type: string
+      generator:
+        strategy: NONE
+  fields:
+    email:
+      type: string
+      length: 32
+      column: email
+      unique: true
+      options:
+        fixed: true
+        comment: User's email address
+    password:
+      type: string
+      column: password
+      nullable: false
