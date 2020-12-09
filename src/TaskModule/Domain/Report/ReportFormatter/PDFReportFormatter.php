@@ -73,7 +73,7 @@ final class PDFReportFormatter implements ReportFormatter
             throw new RuntimeException('Failed to generate pdf report');
         }
 
-        return Report::create($output, 'pdf');
+        return Report::create($output, ReportFormat::PDF_FORMAT);
     }
 
     public function format(): ReportFormat

@@ -17,6 +17,8 @@ use Ramsey\Uuid\Uuid;
 
 final class PDFReportGeneratorTest extends TestCase
 {
+    private const SAMPLE = __DIR__.'/test.pdf';
+
     public function testPDFReportGenerated(): void
     {
         $userId = TaskUserId::create(Uuid::fromString('e3e420a4-3960-11eb-876d-acde48001122'));
@@ -49,8 +51,38 @@ final class PDFReportGeneratorTest extends TestCase
             $tasks, ReportDateRange::create(new DateTimeImmutable('2020-12-08 23:00:00'), new DateTimeImmutable('2020-12-09 23:00:00'))
         );
 
-        $samplePdf = file_get_contents(__DIR__.'/test.pdf');
+        $samplePdf = file_get_contents(self::SAMPLE);
 
         self::assertSame(mb_strlen($report->report()), mb_strlen($samplePdf));
+    }
+
+    public function testPDFReportDifferentTasksNotGenerated(): void
+    {
+        $userId = TaskUserId::create(Uuid::fromString('e3e420a4-3960-11eb-876d-acde48001122'));
+        $tasks = [
+            Task::create(
+                TaskTitle::create('finished task 1'),
+                TaskComment::create(''),
+                new DateTimeImmutable('2020-12-08 23:05:00.0'),
+                TaskLoggedTime::create(10),
+                $userId,
+                ),
+            Task::create(
+                TaskTitle::create('finished task 2'),
+                TaskComment::create('comment'),
+                new DateTimeImmutable('2020-12-08 23:15:00.0'),
+                TaskLoggedTime::create(15),
+                $userId,
+                ),
+        ];
+
+        $generator = new PDFReportFormatter();
+        $report = $generator->generate(
+            $tasks, ReportDateRange::create(new DateTimeImmutable('2020-12-08 23:00:00'), new DateTimeImmutable('2020-12-09 23:00:00'))
+        );
+
+        $samplePdf = file_get_contents(self::SAMPLE);
+
+        self::assertNotSame(mb_strlen($report->report()), mb_strlen($samplePdf));
     }
 }
