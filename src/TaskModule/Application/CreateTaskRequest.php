@@ -39,7 +39,9 @@ final class CreateTaskRequest
         Assert::that(
             [$title, $comment, $plainCreatedAt, $loggedTime],
             'Bad request',
-            )->all()->notNull();
+            )
+            ->all()
+            ->notNull();
     }
 
     public function title(): string

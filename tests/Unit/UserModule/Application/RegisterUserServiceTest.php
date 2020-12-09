@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Application;
 
-use App\Tests\Stubs\DummyEntityManager;
-use App\Tests\Stubs\DummyPasswordEncoder;
+use App\Tests\Unit\Stubs\DummyEntityManager;
+use App\Tests\Unit\Stubs\DummyPasswordEncoder;
 use App\UserModule\Application\RegisterUserService;
 use App\UserModule\Domain\User\User;
 use App\UserModule\Infrastructure\Persistence\DummyUserRepository;

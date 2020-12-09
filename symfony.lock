@@ -99,6 +99,9 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "dompdf/dompdf": {
+        "version": "v0.8.6"
+    },
     "felixfbecker/advanced-json-rpc": {
         "version": "v3.1.1"
     },
@@ -173,6 +176,12 @@
     "openlss/lib-array2xml": {
         "version": "1.0.0"
     },
+    "phenx/php-font-lib": {
+        "version": "0.5.2"
+    },
+    "phenx/php-svg-lib": {
+        "version": "v0.3.3"
+    },
     "php": {
         "version": "7.4"
     },
@@ -187,6 +196,9 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.4.0"
+    },
+    "phpmetrics/phpmetrics": {
+        "version": "v2.7.4"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -220,6 +232,9 @@
     },
     "roave/security-advisories": {
         "version": "dev-master"
+    },
+    "sabberworm/php-css-parser": {
+        "version": "8.3.1"
     },
     "sebastian/diff": {
         "version": "4.0.4"

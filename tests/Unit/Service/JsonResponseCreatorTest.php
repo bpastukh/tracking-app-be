@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Service\JsonResponseCreator;
-use App\Tests\Stubs\DummyJsonSerializer;
+use App\Tests\Unit\Stubs\DummyJsonSerializer;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

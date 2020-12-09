@@ -28,4 +28,24 @@ class Task
     {
         return new self($title, $comment, $createdAt, $loggedTime, $userId);
     }
+
+    public function title(): TaskTitle
+    {
+        return TaskTitle::create($this->title);
+    }
+
+    public function comment(): TaskComment
+    {
+        return TaskComment::create($this->comment);
+    }
+
+    public function createdAt(): DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function loggedTime(): TaskLoggedTime
+    {
+        return TaskLoggedTime::create($this->loggedTime);
+    }
 }

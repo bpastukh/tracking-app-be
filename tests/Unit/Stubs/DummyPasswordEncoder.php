@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Stubs;
+namespace App\Tests\Unit\Stubs;
 
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;

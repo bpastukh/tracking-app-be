@@ -8,6 +8,7 @@
         "ext-json": "*",
         "beberlei/assert": "^3.3",
         "doctrine/doctrine-migrations-bundle": "^2.1",
+        "dompdf/dompdf": "^0.8.6",
         "jms/serializer-bundle": "^3.7",
         "nelmio/cors-bundle": "^2.1",
         "qandidate/symfony-json-request-transformer": "^2.0",
@@ -20,10 +21,12 @@
         "symfony/monolog-bundle": "^3.5",
         "symfony/orm-pack": "^2.0",
         "symfony/security-bundle": "4.4.*",
-        "symfony/yaml": "4.4.*"
+        "symfony/yaml": "4.4.*",
+        "ext-dom": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
+        "phpmetrics/phpmetrics": "^2.7",
         "roave/security-advisories": "dev-master",
         "symfony/test-pack": "^1.0",
         "vimeo/psalm": "^3.11"

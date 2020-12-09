@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Stubs;
+namespace App\Tests\Unit\Stubs;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query\ResultSetMapping;
