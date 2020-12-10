@@ -34,7 +34,7 @@ final class CSVReportFormatter implements ReportFormatter
                     $task->title()->asString(),
                     $task->comment()->asString(),
                     $task->createdAt()->format('Y-m-d H:i:s'),
-                    (string) $task->loggedTime()->asNumber(),
+                    $task->loggedTime()->asNumber(),
                 ]
             );
         }
@@ -48,7 +48,7 @@ final class CSVReportFormatter implements ReportFormatter
         $csv = stream_get_contents($buffer);
         fclose($buffer);
 
-        return Report::create($csv, ReportFormat::CSV_FORMAT);
+        return Report::create($csv, $this->format());
     }
 
     public function format(): ReportFormat

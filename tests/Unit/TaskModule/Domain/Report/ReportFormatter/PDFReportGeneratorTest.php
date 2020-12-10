@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Test\Unit\TaskModule\Domain\Report\ReportGenerator;
 
 use App\TaskModule\Domain\Report\ReportDateRange;
+use App\TaskModule\Domain\Report\ReportFormat;
 use App\TaskModule\Domain\Report\ReportFormatter\PDFReportFormatter;
 use App\TaskModule\Domain\Task;
 use App\TaskModule\Domain\TaskComment;
@@ -17,7 +18,7 @@ use Ramsey\Uuid\Uuid;
 
 final class PDFReportGeneratorTest extends TestCase
 {
-    private const SAMPLE = __DIR__.'/test.pdf';
+    private const SAMPLE = __DIR__.'/snapshot.pdf';
 
     public function testPDFReportGenerated(): void
     {
@@ -53,7 +54,8 @@ final class PDFReportGeneratorTest extends TestCase
 
         $samplePdf = file_get_contents(self::SAMPLE);
 
-        self::assertSame(mb_strlen($report->report()), mb_strlen($samplePdf));
+        self::assertSame(strlen($report->report()), strlen($samplePdf));
+        self::assertSame(ReportFormat::PDF_FORMAT, $report->format()->asString());
     }
 
     public function testPDFReportDifferentTasksNotGenerated(): void
@@ -83,6 +85,6 @@ final class PDFReportGeneratorTest extends TestCase
 
         $samplePdf = file_get_contents(self::SAMPLE);
 
-        self::assertNotSame(mb_strlen($report->report()), mb_strlen($samplePdf));
+        self::assertNotSame(strlen($report->report()), strlen($samplePdf));
     }
 }

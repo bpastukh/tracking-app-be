@@ -11,17 +11,25 @@ use App\TaskModule\Domain\Task;
 use DOMDocument;
 use Dompdf\Dompdf;
 use Dompdf\Options;
-use RuntimeException;
 
 final class PDFReportFormatter implements ReportFormatter
 {
     public function generate(array $tasks, ReportDateRange $dateRange): Report
     {
-        $options = new Options();
-        $options->set('defaultFont', 'Roboto');
+        $html = $this->prepareHtml($tasks, $dateRange);
 
-        $dompdf = new Dompdf($options);
+        $output = $this->covertHtmlToPdf($html);
 
+        return Report::create($output, $this->format());
+    }
+
+    public function format(): ReportFormat
+    {
+        return ReportFormat::create(ReportFormat::PDF_FORMAT);
+    }
+
+    private function prepareHtml(array $tasks, ReportDateRange $dateRange): string
+    {
         $dom = new DOMDocument('1.0', 'utf-8');
         $header = $dom->createElement(
             'h1',
@@ -63,21 +71,23 @@ final class PDFReportFormatter implements ReportFormatter
 
         $dom->appendChild($table);
 
-        $dompdf->loadHtml($dom->saveHTML());
+        return $dom->saveHTML();
+    }
+
+    private function covertHtmlToPdf(string $html): string
+    {
+        $options = new Options();
+        $options->set('defaultFont', 'Roboto');
+
+        $dompdf = new Dompdf($options);
+
+        $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
+        /** @var string $output */
         $output = $dompdf->output();
 
-        if (!$output) {
-            throw new RuntimeException('Failed to generate pdf report');
-        }
-
-        return Report::create($output, ReportFormat::PDF_FORMAT);
-    }
-
-    public function format(): ReportFormat
-    {
-        return ReportFormat::create(ReportFormat::PDF_FORMAT);
+        return $output;
     }
 }

@@ -10,8 +10,8 @@ final class ReportFormat
 {
     public const PDF_FORMAT = 'pdf';
     public const CSV_FORMAT = 'csv';
-    public const XLS_FORMAT = 'xls';
-    private const AVAILABLE_FORMATS = [self::PDF_FORMAT, self::CSV_FORMAT, self::XLS_FORMAT];
+    public const XLSX_FORMAT = 'xlsx';
+    private const AVAILABLE_FORMATS = [self::PDF_FORMAT, self::CSV_FORMAT, self::XLSX_FORMAT];
 
     private string $format;
 

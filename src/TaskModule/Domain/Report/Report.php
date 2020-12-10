@@ -5,15 +5,15 @@ namespace App\TaskModule\Domain\Report;
 final class Report
 {
     private string $binaryReport;
-    private string $format;
+    private ReportFormat $format;
 
-    private function __construct(string $report, string $format)
+    private function __construct(string $report, ReportFormat $format)
     {
         $this->binaryReport = $report;
         $this->format = $format;
     }
 
-    public static function create(string $report, string $format): self
+    public static function create(string $report, ReportFormat $format): self
     {
         return new self($report, $format);
     }
@@ -23,7 +23,7 @@ final class Report
         return $this->binaryReport;
     }
 
-    public function format(): string
+    public function format(): ReportFormat
     {
         return $this->format;
     }

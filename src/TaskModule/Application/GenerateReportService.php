@@ -40,6 +40,6 @@ final class GenerateReportService
             $user
         );
 
-        return ['report' => $reportObject->report(), 'format' => $reportObject->format()];
+        return ['report' => $reportObject->report(), 'format' => $reportObject->format()->asString()];
     }
 }

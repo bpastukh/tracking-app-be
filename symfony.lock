@@ -239,6 +239,9 @@
     "sebastian/diff": {
         "version": "4.0.4"
     },
+    "shuchkin/simplexlsxgen": {
+        "version": "0.9.22"
+    },
     "symfony/browser-kit": {
         "version": "v4.4.17"
     },
