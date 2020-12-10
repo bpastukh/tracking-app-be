@@ -30,7 +30,7 @@
         "phpmetrics/phpmetrics": "^2.7",
         "roave/security-advisories": "dev-master",
         "symfony/test-pack": "^1.0",
-        "vimeo/psalm": "^3.11"
+        "vimeo/psalm": "^4.3.1"
     },
     "config": {
         "preferred-install": {
@@ -66,6 +66,12 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "quality-check": [
+            "vendor/bin/php-cs-fixer fix src",
+            "vendor/bin/php-cs-fixer fix tests",
+            "vendor/bin/psalm",
+            "bin/phpunit tests/Unit"
         ]
     },
     "conflict": {
