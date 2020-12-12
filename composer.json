@@ -23,7 +23,8 @@
         "symfony/monolog-bundle": "^3.5",
         "symfony/orm-pack": "^2.0",
         "symfony/security-bundle": "4.4.*",
-        "symfony/yaml": "4.4.*"
+        "symfony/yaml": "4.4.*",
+        "ext-fileinfo": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",

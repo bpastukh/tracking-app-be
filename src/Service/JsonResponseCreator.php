@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class JsonResponseCreator implements ResponseCreator
 {
-    private $serializer;
+    private SerializerInterface $serializer;
 
     public function __construct(
         SerializerInterface $serializer
@@ -19,7 +19,7 @@ final class JsonResponseCreator implements ResponseCreator
         $this->serializer = $serializer;
     }
 
-    public function createResponse(array $response, int $statusCode = Response::HTTP_OK): JsonResponse
+    private function createResponse(array $response, int $statusCode = Response::HTTP_OK): JsonResponse
     {
         $context = new SerializationContext();
         $context->setSerializeNull(true);
@@ -28,21 +28,12 @@ final class JsonResponseCreator implements ResponseCreator
         return new JsonResponse($serialized, $statusCode, [], true);
     }
 
-    public function createOK(array $payload = null): JsonResponse
+    public function create(array $payload = null, int $statusCode = Response::HTTP_OK): JsonResponse
     {
         $response = [];
         $response['code'] = Response::HTTP_OK;
         $response['payload'] = $payload;
 
-        return $this->createResponse($response, Response::HTTP_OK);
-    }
-
-    public function createBadRequest(array $payload = null): JsonResponse
-    {
-        $response = [];
-        $response['code'] = Response::HTTP_BAD_REQUEST;
-        $response['payload'] = $payload;
-
-        return $this->createResponse($response, Response::HTTP_BAD_REQUEST);
+        return $this->createResponse($response, $statusCode);
     }
 }

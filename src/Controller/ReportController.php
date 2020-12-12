@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 final class ReportController
 {
     /**
-     * @Route("/generate", methods={"POST"})
+     * @Route(methods={"POST"})
      */
     public function generate(
         Request $request,
@@ -33,25 +33,35 @@ final class ReportController
             $report = $reportArray['report'];
             $format = $reportArray['format'];
 
-            $filename = 'reports/'.uniqid('', true).'.'.$format;
-            file_put_contents($filename, $report);
-
-            $response = new Response();
-
-            $response->headers->set('Cache-Control', 'private');
-            $response->headers->set('Content-type', mime_content_type($filename));
-            $response->headers->set('Content-Disposition', 'attachment; filename="'.basename($filename).'";');
-            $response->headers->set('Content-length', (string) filesize($filename));
-
-            $response->sendHeaders();
-
-            $response->setContent($report);
-
-            unlink($filename);
-
-            return $response;
+            return $this->prepareFileResponse($format, $report);
         } catch (InvalidArgumentException $exception) {
-            return $responseCreator->createBadRequest(['message' => $exception->getMessage()]);
+            return $responseCreator->create(['message' => $exception->getMessage()], Response::HTTP_BAD_REQUEST);
         }
+    }
+
+    private function prepareFileResponse($format, $report): Response
+    {
+        $filename = 'reports/'.uniqid('', true).'.'.$format;
+        file_put_contents($filename, $report);
+
+        $response = new Response();
+
+        $this->sendHeaders($response, $filename);
+
+        $response->setContent($report);
+
+        unlink($filename);
+
+        return $response;
+    }
+
+    private function sendHeaders(Response $response, string $filename): void
+    {
+        $response->headers->set('Cache-Control', 'private');
+        $response->headers->set('Content-type', mime_content_type($filename));
+        $response->headers->set('Content-Disposition', 'attachment; filename="'.basename($filename).'";');
+        $response->headers->set('Content-length', (string) filesize($filename));
+
+        $response->sendHeaders();
     }
 }

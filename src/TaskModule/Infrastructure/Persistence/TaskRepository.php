@@ -10,5 +10,13 @@ interface TaskRepository
 {
     public function add(Task $task): void;
 
+    /**
+     * @return Task[]
+     */
     public function findInRange(DateTimeInterface $dateFrom, DateTimeInterface $dateTo, TaskUserId $userId): array;
+
+    /**
+     * @return Task[]
+     */
+    public function taskList(int $page, TaskUserId $userId): array;
 }

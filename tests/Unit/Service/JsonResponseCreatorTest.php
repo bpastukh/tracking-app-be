@@ -24,21 +24,21 @@ final class JsonResponseCreatorTest extends TestCase
 
     public function testCreateResponseIsJson(): void
     {
-        $response = $this->service->createResponse([]);
+        $response = $this->service->create([]);
 
         self::assertSame(get_class($response), JsonResponse::class);
     }
 
     public function testCreateOk(): void
     {
-        $response = $this->service->createOK([]);
+        $response = $this->service->create([]);
 
         self::assertSame($response->getStatusCode(), Response::HTTP_OK);
     }
 
     public function testCreateBadRequest(): void
     {
-        $response = $this->service->createBadRequest([]);
+        $response = $this->service->create([], Response::HTTP_BAD_REQUEST);
 
         self::assertSame($response->getStatusCode(), Response::HTTP_BAD_REQUEST);
     }

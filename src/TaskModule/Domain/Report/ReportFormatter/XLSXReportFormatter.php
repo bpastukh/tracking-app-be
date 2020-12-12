@@ -15,8 +15,6 @@ final class XLSXReportFormatter implements ReportFormatter
     public function generate(array $tasks, ReportDateRange $dateRange): Report
     {
         $prepared = $this->prepareArrayData($tasks, $dateRange);
-
-        /** @var SimpleXLSXGen $xlsx */
         $xlsx = SimpleXLSXGen::fromArray($prepared);
 
         return Report::create($xlsx->__toString(), $this->format());
@@ -41,12 +39,7 @@ final class XLSXReportFormatter implements ReportFormatter
         /** @var Task $task */
         foreach ($tasks as $task) {
             $totalDuration += $task->loggedTime()->asNumber();
-            $prepared[] = [
-                $task->title()->asString(),
-                $task->comment()->asString(),
-                $task->loggedTime()->asNumber(),
-                $task->createdAt()->format('Y-m-d H:i:s'),
-            ];
+            $prepared[] = $task->asArray();
         }
 
         $prepared[] = ['', '', '', "Total: $totalDuration"];

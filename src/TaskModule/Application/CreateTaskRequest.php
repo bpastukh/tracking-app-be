@@ -8,13 +8,13 @@ use Assert\Assert;
 
 final class CreateTaskRequest
 {
-    private $title;
+    private string $title;
 
-    private $comment;
+    private string $comment;
 
-    private $plainCreatedAt;
+    private string $plainCreatedAt;
 
-    private $loggedTime;
+    private int $loggedTime;
 
     public function __construct(
         $title,

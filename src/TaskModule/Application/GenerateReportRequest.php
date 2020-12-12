@@ -8,11 +8,11 @@ use Assert\Assert;
 
 final class GenerateReportRequest
 {
-    private $format;
+    private string $format;
 
-    private $dateFrom;
+    private string $dateFrom;
 
-    private $dateTo;
+    private string $dateTo;
 
     public function __construct($format, $dateFrom, $dateTo)
     {

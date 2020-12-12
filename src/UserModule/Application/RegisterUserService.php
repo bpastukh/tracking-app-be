@@ -14,23 +14,17 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 final class RegisterUserService
 {
-    /**
-     * @var UserRepository
-     */
-    private $repository;
+    private UserRepository $repository;
 
-    /**
-     * @var UserPasswordEncoderInterface
-     */
-    private $encoder;
+    private UserPasswordEncoderInterface $encoder;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
+    private EntityManagerInterface $em;
 
-    public function __construct(UserRepository $repository, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em)
-    {
+    public function __construct(
+        UserRepository $repository,
+        UserPasswordEncoderInterface $encoder,
+        EntityManagerInterface $em
+    ) {
         $this->repository = $repository;
         $this->encoder = $encoder;
         $this->em = $em;
@@ -38,7 +32,11 @@ final class RegisterUserService
 
     public function register(string $email, string $password): User
     {
-        $user = User::create($this->repository->nextIdentity(), UserEmail::create($email), UserPassword::create($password));
+        $user = User::create(
+            $this->repository->nextIdentity(),
+            UserEmail::create($email),
+            UserPassword::create($password)
+        );
         $encodedPassword = $this->encoder->encodePassword($user, $password);
         $user->replacePassword(UserPassword::create($encodedPassword));
 

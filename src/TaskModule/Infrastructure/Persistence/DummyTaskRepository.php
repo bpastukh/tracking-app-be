@@ -10,10 +10,7 @@ use DateTimeInterface;
 
 final class DummyTaskRepository implements TaskRepository
 {
-    /**
-     * @var array
-     */
-    private $tasksToReturn;
+    private array $tasksToReturn;
 
     public function __construct(array $tasksToReturn)
     {
@@ -25,6 +22,11 @@ final class DummyTaskRepository implements TaskRepository
     }
 
     public function findInRange(DateTimeInterface $dateFrom, DateTimeInterface $dateTo, TaskUserId $userId): array
+    {
+        return $this->tasksToReturn;
+    }
+
+    public function taskList(int $page, TaskUserId $userId): array
     {
         return $this->tasksToReturn;
     }

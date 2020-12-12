@@ -14,15 +14,9 @@ use Ramsey\Uuid\Uuid;
 
 final class GenerateReportService
 {
-    /**
-     * @var ReportGenerator
-     */
-    private $reportGenerator;
+    private ReportGenerator $reportGenerator;
 
-    /**
-     * @var RetrieveLoggedInUserIdService
-     */
-    private $loggedInUserIdService;
+    private RetrieveLoggedInUserIdService $loggedInUserIdService;
 
     public function __construct(ReportGenerator $reportGenerator, RetrieveLoggedInUserIdService $loggedInUserIdService)
     {
@@ -30,13 +24,18 @@ final class GenerateReportService
         $this->loggedInUserIdService = $loggedInUserIdService;
     }
 
+    /**
+     * @return array{report: string, format: string}
+     */
     public function generate(GenerateReportRequest $request): array
     {
         $user = TaskUserId::create(Uuid::fromString($this->loggedInUserIdService->retrieve()));
 
         $reportObject = $this->reportGenerator->generate(
             ReportFormat::create($request->format()),
-            ReportDateRange::create(new DateTimeImmutable($request->dateFrom()), new DateTimeImmutable($request->dateTo())),
+            ReportDateRange::create(
+                new DateTimeImmutable($request->dateFrom()), new DateTimeImmutable($request->dateTo())
+            ),
             $user
         );
 

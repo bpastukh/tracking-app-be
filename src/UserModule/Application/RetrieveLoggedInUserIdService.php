@@ -10,10 +10,7 @@ use Symfony\Component\Security\Core\Security;
 
 final class RetrieveLoggedInUserIdService
 {
-    /**
-     * @var Security
-     */
-    private $security;
+    private Security $security;
 
     public function __construct(Security $security)
     {
@@ -22,7 +19,6 @@ final class RetrieveLoggedInUserIdService
 
     public function retrieve(): string
     {
-        return 'e3e420a4-3960-11eb-876d-acde48001122';
         $user = $this->security->getUser();
         if (!$user instanceof User) {
             throw new AuthenticationException('Invalid user');

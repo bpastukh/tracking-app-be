@@ -12,15 +12,11 @@ use Doctrine\ORM\EntityRepository;
 
 final class DoctrineTaskRepository implements TaskRepository
 {
-    /**
-     * @var EntityRepository
-     */
-    private $repository;
+    private const DEFAULT_LIST_LIMIT = 10;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
+    private EntityRepository $repository;
+
+    private EntityManagerInterface $em;
 
     public function __construct(EntityManagerInterface $em)
     {
@@ -50,6 +46,22 @@ final class DoctrineTaskRepository implements TaskRepository
                     'dateTo' => $dateTo->format('Y-m-d H:i:s'),
                 ]
             )
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function taskList(int $page, TaskUserId $userId): array
+    {
+        $offset = --$page * self::DEFAULT_LIST_LIMIT;
+
+        return $this
+            ->repository
+            ->createQueryBuilder('task')
+            ->where('task.userId = :userId')
+            ->setParameter('userId', $userId->asString())
+            ->setMaxResults(self::DEFAULT_LIST_LIMIT)
+            ->setFirstResult($offset)
+            ->orderBy('task.createdAt', 'DESC')
             ->getQuery()
             ->getResult();
     }

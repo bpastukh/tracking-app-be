@@ -8,15 +8,25 @@ use DateTimeInterface;
 
 class Task
 {
-    private string $id;
+    private int $id;
+
     private string $title;
+
     private string $comment;
+
     private DateTimeInterface $createdAt;
+
     private int $loggedTime;
+
     private string $userId;
 
-    private function __construct(TaskTitle $title, TaskComment $comment, DateTimeInterface $createdAt, TaskLoggedTime $loggedTime, TaskUserId $userId)
-    {
+    private function __construct(
+        TaskTitle $title,
+        TaskComment $comment,
+        DateTimeInterface $createdAt,
+        TaskLoggedTime $loggedTime,
+        TaskUserId $userId
+    ) {
         $this->title = $title->asString();
         $this->comment = $comment->asString();
         $this->createdAt = $createdAt;
@@ -24,8 +34,13 @@ class Task
         $this->userId = $userId->asString();
     }
 
-    public static function create(TaskTitle $title, TaskComment $comment, DateTimeInterface $createdAt, TaskLoggedTime $loggedTime, TaskUserId $userId): self
-    {
+    public static function create(
+        TaskTitle $title,
+        TaskComment $comment,
+        DateTimeInterface $createdAt,
+        TaskLoggedTime $loggedTime,
+        TaskUserId $userId
+    ): self {
         return new self($title, $comment, $createdAt, $loggedTime, $userId);
     }
 
@@ -47,5 +62,20 @@ class Task
     public function loggedTime(): TaskLoggedTime
     {
         return TaskLoggedTime::create($this->loggedTime);
+    }
+
+    public function id(): int
+    {
+        return $this->id;
+    }
+
+    public function asArray(): array
+    {
+        return [
+            'title' => $this->title,
+            'comment' => $this->comment,
+            'created_at' => $this->createdAt->format('Y-m-d H:i:s'),
+            'logged_time' => $this->loggedTime,
+        ];
     }
 }

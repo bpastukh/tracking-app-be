@@ -9,15 +9,9 @@ use App\TaskModule\Infrastructure\Persistence\TaskRepository;
 
 final class ReportGenerator
 {
-    /**
-     * @var ReportGeneratorBag
-     */
-    private $bag;
+    private ReportGeneratorBag $bag;
 
-    /**
-     * @var TaskRepository
-     */
-    private $repository;
+    private TaskRepository $repository;
 
     public function __construct(ReportGeneratorBag $bag, TaskRepository $repository)
     {

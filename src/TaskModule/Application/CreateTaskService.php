@@ -17,29 +17,23 @@ use Ramsey\Uuid\Uuid;
 
 final class CreateTaskService
 {
-    /**
-     * @var TaskRepository
-     */
-    private $repository;
+    private TaskRepository $repository;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
+    private EntityManagerInterface $em;
 
-    /**
-     * @var RetrieveLoggedInUserIdService
-     */
-    private $loggedInUserIdService;
+    private RetrieveLoggedInUserIdService $loggedInUserIdService;
 
-    public function __construct(TaskRepository $repository, EntityManagerInterface $em, RetrieveLoggedInUserIdService $loggedInUserIdService)
+    public function __construct(
+        TaskRepository $repository,
+        EntityManagerInterface $em,
+        RetrieveLoggedInUserIdService $loggedInUserIdService)
     {
         $this->repository = $repository;
         $this->em = $em;
         $this->loggedInUserIdService = $loggedInUserIdService;
     }
 
-    public function create(CreateTaskRequest $request): void
+    public function create(CreateTaskRequest $request): int
     {
         $loggedInUser = $this->loggedInUserIdService->retrieve();
 
@@ -49,9 +43,11 @@ final class CreateTaskService
             new DateTimeImmutable($request->plainCreatedAt()),
             TaskLoggedTime::create($request->loggedTime()),
             TaskUserId::create(Uuid::fromString($loggedInUser)),
-            );
+        );
 
         $this->repository->add($task);
         $this->em->flush();
+
+        return $task->id();
     }
 }

@@ -17,7 +17,6 @@ final class PDFReportFormatter implements ReportFormatter
     public function generate(array $tasks, ReportDateRange $dateRange): Report
     {
         $html = $this->prepareHtml($tasks, $dateRange);
-
         $output = $this->covertHtmlToPdf($html);
 
         return Report::create($output, $this->format());

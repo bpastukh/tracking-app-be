@@ -19,7 +19,7 @@ final class SecurityController
      */
     public function login(ResponseCreator $responseCreator): JsonResponse
     {
-        return $responseCreator->createOK();
+        return $responseCreator->create();
     }
 
     /**
@@ -34,13 +34,13 @@ final class SecurityController
             $email = $request->request->get('email');
             $password = $request->request->get('password');
             if (is_null($email) || is_null($password)) {
-                throw new InvalidArgumentException('Bad request', 400);
+                throw new InvalidArgumentException('Bad request', Response::HTTP_BAD_REQUEST);
             }
             $service->register($email, $password);
         } catch (InvalidArgumentException $exception) {
-            return $responseCreator->createBadRequest(['message' => $exception->getMessage()]);
+            return $responseCreator->create(['message' => $exception->getMessage()], Response::HTTP_BAD_REQUEST);
         }
 
-        return $responseCreator->createResponse([], Response::HTTP_CREATED);
+        return $responseCreator->create([], Response::HTTP_CREATED);
     }
 }

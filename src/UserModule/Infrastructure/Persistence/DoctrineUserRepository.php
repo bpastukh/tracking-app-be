@@ -11,10 +11,7 @@ use Ramsey\Uuid\Uuid;
 
 final class DoctrineUserRepository implements UserRepository
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
+    private EntityManagerInterface $em;
 
     public function __construct(EntityManagerInterface $em)
     {

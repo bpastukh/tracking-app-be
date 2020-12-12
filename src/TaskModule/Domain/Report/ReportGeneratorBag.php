@@ -9,7 +9,7 @@ use RuntimeException;
 
 final class ReportGeneratorBag
 {
-    private $reportGenerators = [];
+    private array $reportGenerators = [];
 
     public function get(ReportFormat $format): ReportFormatter
     {

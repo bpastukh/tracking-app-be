@@ -8,7 +8,7 @@ use Ramsey\Uuid\UuidInterface;
 
 final class UserId
 {
-    private $uuid;
+    private UuidInterface $uuid;
 
     private function __construct(UuidInterface $uuid)
     {
