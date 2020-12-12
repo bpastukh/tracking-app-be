@@ -65,4 +65,18 @@ final class DoctrineTaskRepository implements TaskRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function taskPagesCount(TaskUserId $userId): int
+    {
+        $pagesCount = (int) $this
+                ->repository
+                ->createQueryBuilder('task')
+                ->select('count(task.id)')
+                ->where('task.userId = :userId')
+                ->setParameter('userId', $userId->asString())
+                ->getQuery()
+                ->getSingleScalarResult();
+
+        return (int) ceil($pagesCount / self::DEFAULT_LIST_LIMIT);
+    }
 }

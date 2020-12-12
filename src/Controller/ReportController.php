@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 final class ReportController
 {
     /**
-     * @Route(methods={"POST"})
+     * @Route(methods={"GET"})
      */
     public function generate(
         Request $request,
@@ -26,9 +26,9 @@ final class ReportController
         GenerateReportService $service
     ): Response {
         try {
-            $format = $request->request->get('format');
-            $dateFrom = $request->request->get('dateFrom');
-            $dateTo = $request->request->get('dateTo');
+            $format = $request->query->get('format');
+            $dateFrom = $request->query->get('date-from');
+            $dateTo = $request->query->get('date-to');
             $reportArray = $service->generate(new GenerateReportRequest($format, $dateFrom, $dateTo));
             $report = $reportArray['report'];
             $format = $reportArray['format'];

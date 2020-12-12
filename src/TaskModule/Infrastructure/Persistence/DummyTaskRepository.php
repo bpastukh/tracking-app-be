@@ -30,4 +30,9 @@ final class DummyTaskRepository implements TaskRepository
     {
         return $this->tasksToReturn;
     }
+
+    public function taskPagesCount(TaskUserId $userId): int
+    {
+        return count($this->tasksToReturn);
+    }
 }

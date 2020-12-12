@@ -19,4 +19,6 @@ interface TaskRepository
      * @return Task[]
      */
     public function taskList(int $page, TaskUserId $userId): array;
+
+    public function taskPagesCount(TaskUserId $userId): int;
 }

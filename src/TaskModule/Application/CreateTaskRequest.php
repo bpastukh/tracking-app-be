@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\TaskModule\Application;
 
 use Assert\Assert;
+use Assert\InvalidArgumentException;
+use DateTimeImmutable;
+use Exception;
 
 final class CreateTaskRequest
 {
@@ -39,9 +42,15 @@ final class CreateTaskRequest
         Assert::that(
             [$title, $comment, $plainCreatedAt, $loggedTime],
             'Bad request',
-            )
+        )
             ->all()
             ->notNull();
+
+        try {
+            new DateTimeImmutable($plainCreatedAt);
+        } catch (Exception $e) {
+            throw new InvalidArgumentException('Invalid date format', 0);
+        }
     }
 
     public function title(): string

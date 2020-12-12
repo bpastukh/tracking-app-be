@@ -74,8 +74,8 @@ class Task
         return [
             'title' => $this->title,
             'comment' => $this->comment,
-            'created_at' => $this->createdAt->format('Y-m-d H:i:s'),
-            'logged_time' => $this->loggedTime,
+            'createdAt' => $this->createdAt->format('Y-m-d H:i:s'),
+            'loggedTime' => $this->loggedTime,
         ];
     }
 }

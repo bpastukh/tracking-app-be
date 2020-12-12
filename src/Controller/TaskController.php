@@ -8,6 +8,7 @@ use App\Service\ResponseCreator;
 use App\TaskModule\Application\CreateTaskRequest;
 use App\TaskModule\Application\CreateTaskService;
 use App\TaskModule\Application\GetTaskListService;
+use App\TaskModule\Application\GetTotalTaskService;
 use Assert\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,14 +44,17 @@ final class TaskController
     public function taskList(
         ResponseCreator $responseCreator,
         Request $request,
-        GetTaskListService $service
+        GetTaskListService $taskListService,
+        GetTotalTaskService $totalTaskService
     ): JsonResponse {
         $page = $request->query->getInt('page', 1);
         if ($page < 1) {
             return $responseCreator->create(['message' => 'Page must be bigger than 1'], Response::HTTP_BAD_REQUEST);
         }
-        $tasks = $service->get($page);
+        $tasks = $taskListService->get($page);
+        $total = $totalTaskService->get();
+        $payload = ['items' => $tasks, 'totalPages' => $total];
 
-        return $responseCreator->create($tasks);
+        return $responseCreator->create($payload);
     }
 }

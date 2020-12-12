@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\TaskModule\Application;
 
 use Assert\Assert;
+use Assert\InvalidArgumentException;
+use DateTimeImmutable;
 
 final class GenerateReportRequest
 {
@@ -28,10 +30,17 @@ final class GenerateReportRequest
         Assert::that(
             [$format, $dateFrom, $dateTo],
             'Bad request',
-            )
+        )
             ->all()
             ->notNull()
             ->string();
+
+        try {
+            new DateTimeImmutable($dateFrom);
+            new DateTimeImmutable($dateTo);
+        } catch (Exception $e) {
+            throw new InvalidArgumentException('Invalid date format', 0);
+        }
     }
 
     public function format(): string
