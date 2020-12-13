@@ -27,6 +27,7 @@ Create database and execute migrations
 App frontend will be available on http://127.0.0.1:4000/ , backend on http://127.0.0.1:8080/ 
 
 To override defaults copy create .env.local file
+
 Documentation is available on http://127.0.0.1:8080/api/doc
 
 ## Run tests
