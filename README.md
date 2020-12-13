@@ -3,8 +3,12 @@
 
 ## Development server
 
-1. Run docker-compose up
-2. Create database and do migrations:
+1. Run docker services
+   
+   
+    docker-compose up
+
+2. Create database and do migrations
    
 
 
