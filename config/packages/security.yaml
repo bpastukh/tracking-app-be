@@ -20,4 +20,4 @@ security:
         check_path: /login
 
   access_control:
-   - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+   - { path: ^/api(?!/doc$), roles: IS_AUTHENTICATED_FULLY }

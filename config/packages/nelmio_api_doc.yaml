@@ -1,0 +1,11 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: TrackingAppBe
+            description: Api for tracking app
+            version: 1.0.0
+    areas:
+        path_patterns:
+            - ^/api(?!/doc$)
+            - /login
+            - /register

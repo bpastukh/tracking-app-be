@@ -8,6 +8,7 @@ use App\Service\ResponseCreator;
 use App\TaskModule\Application\GenerateReportRequest;
 use App\TaskModule\Application\GenerateReportService;
 use Assert\InvalidArgumentException;
+use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +20,37 @@ final class ReportController
 {
     /**
      * @Route(methods={"GET"})
+     * @SWG\Response(
+     *     response=200,
+     *     description="Returns file with generated report"
+     *     )
+     * )
+     * @SWG\Response(
+     *     response=400,
+     *     description="Bad request"
+     *     )
+     * )
+     * @SWG\Parameter(
+     *     name="format",
+     *     in="query",
+     *     type="string",
+     *     required=true,
+     *     description="Format to generate. Currently available: csv, pdf, xlsx"
+     * )
+     * @SWG\Parameter(
+     *     name="date-from",
+     *     in="query",
+     *     type="string",
+     *     required=true,
+     *     description="Report's start date"
+     * )
+     * @SWG\Parameter(
+     *     name="date-to",
+     *     in="query",
+     *     type="string",
+     *     required=true,
+     *     description="Report's finish date"
+     * )
      */
     public function generate(
         Request $request,

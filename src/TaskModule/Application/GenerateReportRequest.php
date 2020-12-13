@@ -7,6 +7,7 @@ namespace App\TaskModule\Application;
 use Assert\Assert;
 use Assert\InvalidArgumentException;
 use DateTimeImmutable;
+use Exception;
 
 final class GenerateReportRequest
 {
