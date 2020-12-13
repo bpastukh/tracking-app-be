@@ -1,7 +1,10 @@
 # TrackingAppBe
 
 ## Clone repository and install dependencies
-    git clone git@github.com:bpastukh/tracking-app-be.git
+Clone this repo (e.g. git clone git@github.com:bpastukh/tracking-app-be.git)
+
+Install dependencies
+
 
     composer install
 
@@ -12,7 +15,7 @@ Run docker services
    
     docker-compose up
 
-Create database and do migrations
+Create database and execute migrations
    
 
 
