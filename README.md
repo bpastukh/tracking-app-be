@@ -1,7 +1,11 @@
 # TrackingAppBe
 
+## Clone repository and install dependencies
+    git clone git@github.com:bpastukh/tracking-app-be.git
 
-## Development server
+    composer install
+
+## Run development server
 
 Run docker services
    
