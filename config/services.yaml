@@ -28,4 +28,6 @@ services:
         App\TaskModule\Domain\Report\ReportFormatter\ReportFormatter:
             tags: ['report.report_formatter']
 
-
+    app.logout_success_listener:
+        class: App\EventListener\LogoutSuccessListener
+        arguments: [ ]

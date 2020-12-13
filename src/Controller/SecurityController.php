@@ -47,6 +47,19 @@ final class SecurityController
     }
 
     /**
+     * @Route("/logout", methods={"POST"})
+     * @SWG\Response(
+     *     response=200,
+     *     description="Logs out"
+     *     )
+     * )
+     */
+    public function logout(ResponseCreator $responseCreator): JsonResponse
+    {
+        return $responseCreator->create();
+    }
+
+    /**
      * @Route("/register", methods={"POST"})
      * @SWG\Response(
      *     response=201,

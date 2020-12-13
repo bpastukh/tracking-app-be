@@ -18,6 +18,10 @@ security:
       json_login:
         username_path: email
         check_path: /login
+      logout:
+        delete_cookies: true
+        path: /logout
+        success_handler: 'app.logout_success_listener'
 
   access_control:
-   - { path: ^/api(?!/doc$), roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/api(?!/doc$), roles: IS_AUTHENTICATED_FULLY }
