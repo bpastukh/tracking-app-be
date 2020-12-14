@@ -8,8 +8,65 @@
     "beberlei/assert": {
         "version": "v3.3.0"
     },
+    "behat/gherkin": {
+        "version": "v4.6.2"
+    },
     "brick/math": {
         "version": "0.9.1"
+    },
+    "codeception/codeception": {
+        "version": "2.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.3",
+            "ref": "5d3fec49d4a7ecb411c417fc51cf48b06a86946d"
+        },
+        "files": [
+            "codeception.yml",
+            "tests/_data/.gitignore",
+            "tests/_output/.gitignore",
+            "tests/_support/AcceptanceTester.php",
+            "tests/_support/FunctionalTester.php",
+            "tests/_support/Helper/Acceptance.php",
+            "tests/_support/Helper/Functional.php",
+            "tests/_support/Helper/Unit.php",
+            "tests/_support/UnitTester.php",
+            "tests/_support/_generated/.gitignore",
+            "tests/acceptance/.gitignore",
+            "tests/functional/.gitignore",
+            "tests/unit/.gitignore",
+            "tests/acceptance.suite.yml",
+            "tests/functional.suite.yml",
+            "tests/unit.suite.yml"
+        ]
+    },
+    "codeception/lib-asserts": {
+        "version": "1.13.2"
+    },
+    "codeception/lib-innerbrowser": {
+        "version": "1.3.4"
+    },
+    "codeception/module-asserts": {
+        "version": "1.3.1"
+    },
+    "codeception/module-doctrine2": {
+        "version": "1.1.1"
+    },
+    "codeception/module-phpbrowser": {
+        "version": "1.0.2"
+    },
+    "codeception/module-rest": {
+        "version": "1.2.7"
+    },
+    "codeception/module-symfony": {
+        "version": "1.5.0"
+    },
+    "codeception/phpunit-wrapper": {
+        "version": "9.0.5"
+    },
+    "codeception/stub": {
+        "version": "3.7.0"
     },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.1"
@@ -123,6 +180,15 @@
             ".php_cs.dist"
         ]
     },
+    "guzzlehttp/guzzle": {
+        "version": "7.2.0"
+    },
+    "guzzlehttp/promises": {
+        "version": "1.4.0"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.7.0"
+    },
     "jms/metadata": {
         "version": "2.4.0"
     },
@@ -143,6 +209,9 @@
             "config/packages/prod/jms_serializer.yaml"
         ]
     },
+    "justinrainbow/json-schema": {
+        "version": "5.2.10"
+    },
     "laminas/laminas-code": {
         "version": "3.5.1"
     },
@@ -154,6 +223,9 @@
     },
     "monolog/monolog": {
         "version": "1.25.5"
+    },
+    "myclabs/deep-copy": {
+        "version": "1.10.2"
     },
     "nelmio/api-doc-bundle": {
         "version": "3.0",
@@ -192,6 +264,12 @@
     "openlss/lib-array2xml": {
         "version": "1.0.0"
     },
+    "phar-io/manifest": {
+        "version": "2.0.1"
+    },
+    "phar-io/version": {
+        "version": "3.0.4"
+    },
     "phenx/php-font-lib": {
         "version": "0.5.2"
     },
@@ -216,17 +294,58 @@
     "phpmetrics/phpmetrics": {
         "version": "v2.7.4"
     },
+    "phpspec/prophecy": {
+        "version": "1.12.1"
+    },
+    "phpunit/php-code-coverage": {
+        "version": "9.2.5"
+    },
+    "phpunit/php-file-iterator": {
+        "version": "3.0.5"
+    },
+    "phpunit/php-invoker": {
+        "version": "3.1.1"
+    },
+    "phpunit/php-text-template": {
+        "version": "2.0.4"
+    },
+    "phpunit/php-timer": {
+        "version": "5.0.3"
+    },
+    "phpunit/phpunit": {
+        "version": "4.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.7",
+            "ref": "477e1387616f39505ba79715f43f124836020d71"
+        },
+        "files": [
+            ".env.test",
+            "phpunit.xml.dist",
+            "tests/bootstrap.php"
+        ]
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/log": {
         "version": "1.1.3"
     },
     "qandidate/symfony-json-request-transformer": {
         "version": "2.0.0"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "ramsey/collection": {
         "version": "1.1.1"
@@ -252,11 +371,59 @@
     "sabberworm/php-css-parser": {
         "version": "8.3.1"
     },
+    "sebastian/cli-parser": {
+        "version": "1.0.1"
+    },
+    "sebastian/code-unit": {
+        "version": "1.0.8"
+    },
+    "sebastian/code-unit-reverse-lookup": {
+        "version": "2.0.3"
+    },
+    "sebastian/comparator": {
+        "version": "4.0.6"
+    },
+    "sebastian/complexity": {
+        "version": "2.0.2"
+    },
     "sebastian/diff": {
         "version": "4.0.4"
     },
+    "sebastian/environment": {
+        "version": "5.1.3"
+    },
+    "sebastian/exporter": {
+        "version": "4.0.3"
+    },
+    "sebastian/global-state": {
+        "version": "5.0.2"
+    },
+    "sebastian/lines-of-code": {
+        "version": "1.0.3"
+    },
+    "sebastian/object-enumerator": {
+        "version": "4.0.4"
+    },
+    "sebastian/object-reflector": {
+        "version": "2.0.4"
+    },
+    "sebastian/recursion-context": {
+        "version": "4.0.4"
+    },
+    "sebastian/resource-operations": {
+        "version": "3.0.3"
+    },
+    "sebastian/type": {
+        "version": "2.3.1"
+    },
+    "sebastian/version": {
+        "version": "3.0.2"
+    },
     "shuchkin/simplexlsxgen": {
         "version": "0.9.22"
+    },
+    "softcreatr/jsonpath": {
+        "version": "0.7.2"
     },
     "symfony/browser-kit": {
         "version": "v4.4.17"
@@ -485,6 +652,9 @@
     },
     "symfony/yaml": {
         "version": "v4.4.17"
+    },
+    "theseer/tokenizer": {
+        "version": "1.2.0"
     },
     "vimeo/psalm": {
         "version": "3.18.2"

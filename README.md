@@ -31,4 +31,7 @@ To override defaults copy create .env.local file
 Documentation is available on http://127.0.0.1:8080/api/doc
 
 ## Run tests
-    pin/phpunit tests/Unit
+    vendor/bin/phpunit tests/Unit
+
+
+    /vendor/bin/codecept run functional
