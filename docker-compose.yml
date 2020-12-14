@@ -18,7 +18,7 @@ services:
       - ./:/app
 
   frontend:
-   image: bpastukh/tracking-app-fe:1.0.0
+   image: bpastukh/tracking-app-fe:1.0.1
    container_name: frontend
    ports:
      - "4000:80"
