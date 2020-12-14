@@ -34,4 +34,4 @@ Documentation is available on http://127.0.0.1:8080/api/doc
     vendor/bin/phpunit tests/Unit
 
 
-    /vendor/bin/codecept run functional
+    vendor/bin/codecept run functional
