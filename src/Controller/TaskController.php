@@ -90,9 +90,9 @@ final class TaskController
         GetTaskListService $taskListService,
         GetTotalTaskService $totalTaskService
     ): JsonResponse {
-        $page = $request->query->getInt('page', 1);
-        if ($page < 1) {
-            return $responseCreator->create(['message' => 'Page must be bigger than 1'], Response::HTTP_BAD_REQUEST);
+        $page = $request->query->getInt('page');
+        if ($page < 0) {
+            return $responseCreator->create(['message' => 'Page must be bigger than 0'], Response::HTTP_BAD_REQUEST);
         }
         $tasks = $taskListService->get($page);
         $total = $totalTaskService->get();

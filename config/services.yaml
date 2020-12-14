@@ -30,4 +30,3 @@ services:
 
     app.logout_success_listener:
         class: App\EventListener\LogoutSuccessListener
-        arguments: [ ]

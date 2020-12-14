@@ -52,7 +52,7 @@ final class DoctrineTaskRepository implements TaskRepository
 
     public function taskList(int $page, TaskUserId $userId): array
     {
-        $offset = --$page * self::DEFAULT_LIST_LIMIT;
+        $offset = $page * self::DEFAULT_LIST_LIMIT;
 
         return $this
             ->repository
