@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\TaskModule\Domain\Report\ReportFormatter;
+namespace App\TaskModule\Infrastructure\ReportFormatter;
 
 use App\TaskModule\Domain\Report\Report;
 use App\TaskModule\Domain\Report\ReportDateRange;
 use App\TaskModule\Domain\Report\ReportFormat;
+use App\TaskModule\Domain\Report\ReportFormatter;
 use App\TaskModule\Domain\Task;
 use RuntimeException;
 

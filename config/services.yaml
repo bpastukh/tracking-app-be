@@ -25,7 +25,7 @@ services:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
 
     _instanceof:
-        App\TaskModule\Domain\Report\ReportFormatter\ReportFormatter:
+        App\TaskModule\Domain\Report\ReportFormatter:
             tags: ['report.report_formatter']
 
     app.logout_success_listener:

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\TaskModule\Domain\Report;
 
-use App\TaskModule\Domain\Report\ReportFormatter\ReportFormatter;
 use RuntimeException;
 
 final class ReportGeneratorBag

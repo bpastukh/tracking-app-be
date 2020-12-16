@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\TaskModule\Domain;
 
 use App\TaskModule\Domain\Report\ReportFormat;
-use App\TaskModule\Domain\Report\ReportFormatter\PDFReportFormatter;
 use App\TaskModule\Domain\Report\ReportGeneratorBag;
+use App\TaskModule\Infrastructure\ReportFormatter\PDFReportFormatter;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 

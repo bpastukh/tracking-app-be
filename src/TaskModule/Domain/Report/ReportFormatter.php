@@ -1,10 +1,6 @@
 <?php
 
-namespace App\TaskModule\Domain\Report\ReportFormatter;
-
-use App\TaskModule\Domain\Report\Report;
-use App\TaskModule\Domain\Report\ReportDateRange;
-use App\TaskModule\Domain\Report\ReportFormat;
+namespace App\TaskModule\Domain\Report;
 
 interface ReportFormatter
 {

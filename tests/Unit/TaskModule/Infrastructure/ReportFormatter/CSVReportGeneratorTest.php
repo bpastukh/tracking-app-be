@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Test\Unit\TaskModule\Domain\Report\ReportGenerator;
+namespace App\Test\Unit\TaskModule\Infrastructure\Report\ReportGenerator;
 
 use App\TaskModule\Domain\Report\ReportDateRange;
 use App\TaskModule\Domain\Report\ReportFormat;
-use App\TaskModule\Domain\Report\ReportFormatter\CSVReportFormatter;
 use App\TaskModule\Domain\Task;
 use App\TaskModule\Domain\TaskComment;
 use App\TaskModule\Domain\TaskLoggedTime;
 use App\TaskModule\Domain\TaskTitle;
 use App\TaskModule\Domain\TaskUserId;
+use App\TaskModule\Infrastructure\ReportFormatter\CSVReportFormatter;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;

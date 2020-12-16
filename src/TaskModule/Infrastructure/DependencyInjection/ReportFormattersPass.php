@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\TaskModule\Infrastructure\DependencyInjection;
 
-use App\TaskModule\Domain\Report\ReportFormatter\ReportFormatter;
+use App\TaskModule\Domain\Report\ReportFormatter;
 use App\TaskModule\Domain\Report\ReportGeneratorBag;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
